@@ -44,9 +44,11 @@ var vm = new Vue({
 
 		showForm : true,
 
-		player1: "",
+		player1: "Joueur 1",
 
-		player2: "",
+		player2: "Joueur 2",
+
+		currentPlayer: "Joueur 1",
 
 		winner: "",
 
@@ -57,7 +59,8 @@ var vm = new Vue({
 			this.nikeName1 = value
 		},
 		incrementTour: function () {
-			this.winner = this.counter % 2 === 0 ? this.player1 : this.player2;		
+			this.winner = this.counter % 2 === 0 ? this.player1 : this.player2;	
+			this.currentPlayer = this.counter % 2 === 0 ? this.player2 : this.player1;		
       		this.counter += 1
       		this.IsWin();
   		},
@@ -94,7 +97,8 @@ var vm = new Vue({
 			}		
 		},
   		displayAlert: function () {
-  			this.success = true		
+  			this.success = true	
+  			this.currentPlayer = false	
   				
   		},
   		displayAlertDraw: function () {
@@ -114,10 +118,14 @@ var vm = new Vue({
 			})
 			this.showForm = true
 			this.success = false 
+			this.currentPlayer = ""
+			this.player1 = 'player1'
+			this.player2 = 'player2'
 		},
 		getFormValues () {
       		this.player1 = this.$refs.player1.value
       		this.player2 = this.$refs.player2.value	
+      		this.currentPlayer = this.player1
       		this.showForm = false	
    		 }
     }

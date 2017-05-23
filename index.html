@@ -13,11 +13,13 @@
 			<div class="morpion">
 				<div class="fullwidth"  v-if="showForm">
 					<form>
+						<p>Entrez vos pseudos</p>
 					    <input type="text" ref="player1" placeholder="name player 1">
 					    <input type="text" ref="player2" placeholder="name player 2">
 					    <button @click.prevent="getFormValues()">Send</button>
 					  </form>
-				</div>			
+				</div>
+				<p v-if="currentPlayer" class="fullwidth">Tour de {{ currentPlayer }}</p>			
 				<div class="case" v-for="item in 9">
 					 <simple-case v-on:increment="incrementTour"  :counter="counter" :reset="reset" v-on:winner="displayAlert"></simple-case>
 				</div>
