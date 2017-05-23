@@ -1,0 +1,33 @@
+.morpion {
+	width:900px;
+	margin:0 auto;
+	display:flex;
+	align-items:center;
+	flex-wrap:wrap;
+}
+.case {
+	width:298px;
+	height:150px;
+	border:1px solid #000;
+	font-size: 36px;
+	font-family:'Verdanna';
+	color:red;
+	align-items:center;
+	display:flex;
+	justify-content:center;
+	
+}
+
+.box {
+	height: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 148px;
+}
+
+.fullwidth {
+	width:100%;
+	margin:20px 0;
+}
