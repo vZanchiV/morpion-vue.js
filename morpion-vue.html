@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="fr" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8" />
+	<link href="morpion.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	
+</head>
+<body>
+	<div>
+		<div class="container" id="morpion">
+			<div class="morpion">
+				<div class="fullwidth"  v-if="showForm">
+					<form>
+					    <input type="text" ref="player1" placeholder="name player 1">
+					    <input type="text" ref="player2" placeholder="name player 2">
+					    <button @click.prevent="getFormValues()">Send</button>
+					  </form>
+				</div>			
+				<div class="case" v-for="item in 9">
+					 <simple-case v-on:increment="incrementTour"  :counter="counter" :reset="reset" v-on:winner="displayAlert"></simple-case>
+				</div>
+				<div class="alert fullwidth alert-success" v-if="success">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="close">
+					    <span aria-hidden="true">&times;</span>
+					 </button>
+					<p>{{ msg }} {{ winner }}</p>
+				</div>
+				<div class="alert fullwidth alert-warning" v-if="draw">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="close">
+					    <span aria-hidden="true">&times;</span>
+					 </button>
+					<p>Draw</p>
+				</div>
+
+				
+				
+
+
+				<button type="button" class="btn btn-success" @click="playagain" >Relancer une partie</button>
+		
+			</div>			
+		</div>
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js" charset="utf-8"></script>
+	<script type="text/javascript" src="morpion-vue.js" charset="utf-8"></script>
+</body>
+</html>
