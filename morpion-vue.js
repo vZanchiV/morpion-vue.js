@@ -1,13 +1,14 @@
 function initialState () {
 	return {
-		caseValue:'Click Me'
+		caseValue:'Click Me',
+		caseState : true
 	}
 }
 
 
 Vue.component('simple-case', {
   template: `
-    <div class="box" v-on:click="Play">
+    <div class="box" v-on:click="caseState ? Play() : null">
       {{ caseValue }}
     </div>
   `,
@@ -18,14 +19,16 @@ Vue.component('simple-case', {
 
 	methods: {
 		Play:function () {
-			this.caseValue = this.Tour();
-			this.$emit('increment');		
+			this.caseValue = this.Tour()
+			this.caseState = false
+			this.$emit('increment')	
 		},
 		Tour:function () {
 			return this.counter % 2 === 0 ? 'O' : 'X';
 		},
 		resetWindow: function (){
         	this.caseValue = 'Click Me';
+        	this.caseState = true
     	}
 	}
 
